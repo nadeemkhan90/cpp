@@ -1,7 +1,7 @@
 /*
 object oriented languages
 Lecture 16 + 17 : operator overloading
-
+by : Mohd Nadeem Khan
 */
 
 #include <iostream>

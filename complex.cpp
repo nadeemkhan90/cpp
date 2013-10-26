@@ -68,17 +68,38 @@ class complex{
 	}
 
 */	
+	//STREAM INSERIOTN OPERATOR OVERLOADING
 	friend ostream & operator << (ostream &os,const complex &c){
 		os<<'('<<c.real<<','<<c.imaginary<<')'<<endl;;
 		return os;	 
 		
+	}
+	//STREAM EXTRACTION OPERATOR
+	friend istream & operator >>(istream &in,complex &c){
+		in>>c.real;
+		in>>c.imaginary;
+		return in;
+		
+	}
+	//OVERLOADING EQUALITY OPERATOR
+	bool operator ==(const complex &c){
+		
+		if((real==c.real)&&(imaginary==c.imaginary))
+		{
+			return true;
+		}
+		else
+		 {
+			return false;	
+			
+		}
 	}
 		
 };
 
 int main()
 {
-	complex c1(2,3);
+	complex c1(2,3); 
 	c1.printComplex();
 	complex c2;
 	c2.set(12,13);
@@ -88,5 +109,14 @@ int main()
 	complex c4=12+c3;
 	c4.printComplex();
 	cout<<c1<<c2;
+	complex c5(1,3);
+	cin>>c5;
+	cout<<c5;
+	if(c1==c2){
+		cout<<"complex are equal";
+	}
+	else{
+		cout<<"complex are not equal";
+	}
 	return 0;
 }

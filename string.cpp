@@ -1,11 +1,14 @@
 /*
 Lecture 17: operator overloading string 
+Lecture 21: type conversion
 MOHD NADEEM KHAN
 */
 
 
 #include <iostream>
 #include <assert.h>
+#include <stdlib.h>
+#include <stdio.h>
 using namespace std;
 class String{
 	int size;
@@ -127,6 +130,43 @@ public:
 		return str;
 	}
 	
+	//type conversion : using constructor single argument
+	explicit String(int a){
+		cout<<"string (int ) called "<<endl;
+		char array[15];
+		itoa(a,array,10);
+		size=strlen(array);
+		bufferPtr=new char[size +1];
+		strcpy(bufferPtr,array); 
+	}
+	void itoa(int a, char *array, int base){
+	/*	int divisor=1,i=0;
+		int temp=a;
+		while(temp>1){
+			temp/=10;
+			divisor*=10;
+		}
+		temp=a;
+
+	while(temp>=1){
+	array[i++]=temp/divisor;
+	cout<<temp/divisor;
+	temp=divisor-(temp/divisor);
+	divisor/=10;
+}
+array[i+1]='\0';
+for(int i=0;;i++){
+//	cout<<array[i]<<endl;
+}*/
+	}
+	int Asint(){
+		if(size>0)
+			return size;//should use atoi
+		else return -1;
+		
+	}
+
+	
 };
 
 
@@ -155,5 +195,10 @@ int main (){
 	s4.printString();
 	String str5(str3(1,5));
 	str5.printString();
+	String s=(String)345;
+	s.printString();
+	cout<<"hi";
+	String sr("fakhir");
+	cout<<sr.Asint();
 	return 0;
 }

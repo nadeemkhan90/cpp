@@ -1,6 +1,6 @@
 /*
 object oriented languages
-Lecture 16 + 17 : operator overloading
+Lecture 16 - 21: operator overloading
 by : Mohd Nadeem Khan
 */
 
@@ -13,7 +13,10 @@ class complex{
  public:
 	void printComplex()
 	{
-		cout<<real<<"+"<<imaginary<<"i"<<endl;	
+		if(imaginary>0)
+		cout<<real<<"+"<<imaginary<<'i'<<endl;
+		else
+			cout<<real<<imaginary<<'i'<<endl;	
 	}
 	void set(int x,int y)
 	{
@@ -94,6 +97,28 @@ class complex{
 			
 		}
 	}
+	//UNARY MINUS OPERATOR OVERLOADING 
+	complex operator - (){
+		
+		complex temp ;
+		temp.real=-real;
+		temp.imaginary=-imaginary;
+		return temp;
+	}
+	
+	//preincrement returns reference
+	complex & operator ++(){
+		
+		real=real+1;
+		return *this;
+	}
+	
+	//POST INCREMENT REQUIRE AN EXTRA DUMMY PARAMERTER , return type is complex not reference
+	complex operator ++(int){
+		complex t=*this;
+		real+=1;
+		return t;
+	}
 		
 };
 
@@ -113,10 +138,17 @@ int main()
 	cin>>c5;
 	cout<<c5;
 	if(c1==c2){
-		cout<<"complex are equal";
+		cout<<"complex are equal"<<endl;
 	}
 	else{
-		cout<<"complex are not equal";
+		cout<<"complex are not equal"<<endl;
 	}
+	c1=-c1;
+	c1.printComplex();
+	++c2;
+	c2.printComplex();
+	++++c2;
+	c2.printComplex();
+	
 	return 0;
 }
